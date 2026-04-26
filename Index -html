@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutor de Estadística — Master Barista Workshop</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-icon">☕</div>
+    <div class="header-titles">
+      <h1>Tutor de Estadística</h1>
+      <p>Master Barista Workshop · Ing. Alimentos · Administración</p>
+    </div>
+    <div class="progress-bar-wrap">
+      <div class="progress-label">
+        <span>Progreso del curso</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="app-layout">
+
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📊 Bloque I — Fundamentos</div>
+      <button class="topic-btn" onclick="loadTopic('variables')"><span class="check">○</span> Tipos de Variables</button>
+      <button class="topic-btn" onclick="loadTopic('poblacion_muestra')"><span class="check">○</span> Población y Muestra</button>
+      <button class="topic-btn" onclick="loadTopic('frecuencias')"><span class="check">○</span> Tablas de Frecuencia</button>
+      <button class="topic-btn" onclick="loadTopic('muestreo')"><span class="check">○</span> Métodos de Muestreo</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📈 Bloque II — Descriptiva</div>
+      <button class="topic-btn" onclick="loadTopic('media')"><span class="check">○</span> Media Aritmética</button>
+      <button class="topic-btn" onclick="loadTopic('mediana')"><span class="check">○</span> Mediana</button>
+      <button class="topic-btn" onclick="loadTopic('moda')"><span class="check">○</span> Moda</button>
+      <button class="topic-btn" onclick="loadTopic('cuartiles')"><span class="check">○</span> Cuartiles y Percentiles</button>
+      <button class="topic-btn" onclick="loadTopic('varianza')"><span class="check">○</span> Varianza y Desv. Estándar</button>
+      <button class="topic-btn" onclick="loadTopic('boxplot')"><span class="check">○</span> Box Plot</button>
+      <button class="topic-btn" onclick="loadTopic('sesgo')"><span class="check">○</span> Sesgo y Forma</button>
+      <button class="topic-btn" onclick="loadTopic('graficos')"><span class="check">○</span> Gráficos Estadísticos</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🎲 Bloque III — Probabilidad</div>
+      <button class="topic-btn" onclick="loadTopic('prob_clasica')"><span class="check">○</span> Probabilidad Clásica</button>
+      <button class="topic-btn" onclick="loadTopic('prob_condicional')"><span class="check">○</span> Prob. Condicional</button>
+      <button class="topic-btn" onclick="loadTopic('binomial')"><span class="check">○</span> Dist. Binomial</button>
+      <button class="topic-btn" onclick="loadTopic('poisson')"><span class="check">○</span> Dist. de Poisson</button>
+      <button class="topic-btn" onclick="loadTopic('geometrica')"><span class="check">○</span> Dist. Geométrica</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">🔔 Bloque IV — Inferencial</div>
+      <button class="topic-btn" onclick="loadTopic('normal')"><span class="check">○</span> Distribución Normal y Z</button>
+      <button class="topic-btn" onclick="loadTopic('tcl')"><span class="check">○</span> Teorema Central del Límite</button>
+      <button class="topic-btn" onclick="loadTopic('intervalos')"><span class="check">○</span> Intervalos de Confianza</button>
+      <button class="topic-btn" onclick="loadTopic('hipotesis')"><span class="check">○</span> Pruebas de Hipótesis</button>
+      <button class="topic-btn" onclick="loadTopic('dos_muestras')"><span class="check">○</span> Pruebas con 2 Muestras</button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📐 Bloque V — Avanzado</div>
+      <button class="topic-btn" onclick="loadTopic('chi2')"><span class="check">○</span> Chi-Cuadrado (χ²)</button>
+      <button class="topic-btn" onclick="loadTopic('regresion')"><span class="check">○</span> Regresión Lineal</button>
+      <button class="topic-btn" onclick="loadTopic('correlacion')"><span class="check">○</span> Correlación (r y r²)</button>
+      <button class="topic-btn" onclick="loadTopic('anova')"><span class="check">○</span> ANOVA y Distribución F</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="topic-header">
+      <div class="topic-tag" id="topicTag">☕ Bienvenido</div>
+      <div class="topic-title" id="topicTitle">Su Tutor Interactivo de Estadística</div>
+      <div class="topic-subtitle" id="topicSubtitle">Seleccione un tema en el panel izquierdo para comenzar</div>
+    </div>
+
+    <div class="chat-area" id="chatArea">
+      <div class="welcome-card">
+        <h2>Buenas tardes. Soy su tutor.</h2>
+        <p>Trabajaremos con el libro <strong>Introductory Statistics</strong> de Illowsky &amp; Dean (OpenStax). Cada tema: <strong>20% teoría</strong> intuitiva + <strong>80% ejercicio</strong> paso a paso, siempre conectando descriptiva con inferencial.</p>
+        <p>Seleccione cualquier tema del panel izquierdo, o comience aquí:</p>
+        <div class="topic-grid">
+          <div class="topic-pill" onclick="loadTopic('variables')"><span class="icon">🔤</span> Tipos de Variables</div>
+          <div class="topic-pill" onclick="loadTopic('media')"><span class="icon">📊</span> Media, Mediana, Moda</div>
+          <div class="topic-pill" onclick="loadTopic('cuartiles')"><span class="icon">📦</span> Cuartiles y Percentiles</div>
+          <div class="topic-pill" onclick="loadTopic('varianza')"><span class="icon">📏</span> Varianza y Desv. Estándar</div>
+          <div class="topic-pill" onclick="loadTopic('normal')"><span class="icon">🔔</span> Distribución Normal</div>
+          <div class="topic-pill" onclick="loadTopic('anova')"><span class="icon">⚖️</span> ANOVA y Dist. F</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-actions" id="quickActions" style="display:none">
+      <button class="quick-btn" onclick="sendQuick('No entendí, explíqueme de otra forma')">🔄 Explique de otra forma</button>
+      <button class="quick-btn" onclick="sendQuick('Muéstreme la fórmula paso a paso')">📐 Ver la fórmula</button>
+      <button class="quick-btn" onclick="sendQuick('Quiero otro ejercicio de práctica')">✏️ Otro ejercicio</button>
+      <button class="quick-btn" onclick="sendQuick('¿Cómo aplico esto en mi negocio de café?')">☕ Aplicar al café</button>
+      <button class="quick-btn" onclick="sendQuick('Continúe al siguiente tema')">➡️ Siguiente tema</button>
+    </div>
+
+    <div class="input-area">
+      <div class="input-wrap">
+        <textarea id="userInput" rows="1" placeholder="Escriba su respuesta o pregunta aquí… (Enter para enviar)"
+          onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      </div>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Enviar">➤</button>
+    </div>
+  </main>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
